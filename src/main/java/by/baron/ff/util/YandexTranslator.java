@@ -13,10 +13,10 @@ public class YandexTranslator implements Translator {
     @Override
     public  String translate(String text) throws IOException {
 
-//        String urlStr =
-//                "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200427T170437Z.ea55570780d18416.b9dfd6ba98ce64b64495d9da5ee487c596b65f19&ui=ru";
+        String urlStr =
+                "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20200427T170437Z.ea55570780d18416.b9dfd6ba98ce64b64495d9da5ee487c596b65f19&ui=ru";
 
-        String urlStr = "https://translate.google.by/?hl=en&tab=wT#view=home&op=translate&sl=ru&tl=en& ";
+     //   String urlStr = "https://translate.google.by/?hl=en&tab=wT#view=home&op=translate&sl=ru&tl=en& ";
                      //    https://translate.google.by/?hl=en&tab=wT#view=home&op=translate&sl=ru&tl=en&
 
         URL urlObj = new URL(urlStr);
@@ -26,8 +26,8 @@ public class YandexTranslator implements Translator {
         connection.setDoOutput(true);
         DataOutputStream dataOutputStream = new DataOutputStream(connection.getOutputStream());
 
-        //dataOutputStream.writeBytes("text=" + URLEncoder.encode(text,"UTF-8") + "&lang=en");
-        dataOutputStream.writeBytes("text=" + URLEncoder.encode(text,"UTF-8"));
+        dataOutputStream.writeBytes("text=" + URLEncoder.encode(text,"UTF-8") + "&lang=en");
+       // dataOutputStream.writeBytes("text=" + URLEncoder.encode(text,"UTF-8"));
 
         InputStream response = connection.getInputStream();
         String json = new java.util.Scanner(response).nextLine();

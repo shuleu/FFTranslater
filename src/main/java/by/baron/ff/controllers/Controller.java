@@ -2,6 +2,7 @@ package by.baron.ff.controllers;
 
 import by.baron.ff.util.MogTranslator;
 import by.baron.ff.util.Translator;
+import by.baron.ff.util.YandexTranslator;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -24,8 +25,8 @@ public class Controller {
     @FXML
     public void initialize(){
 
-     //   final Translator translator = new YandexTranslator();
-          final Translator translator = new MogTranslator();
+        final Translator translator = new YandexTranslator();
+       //   final Translator translator = new MogTranslator();
 
         textArea.addEventHandler(KeyEvent.ANY, new EventHandler<KeyEvent>() {
             @Override
@@ -35,6 +36,7 @@ public class Controller {
                 try {
 
                     textFlow.getChildren().setAll(new Text(translator.translate(textArea.getText())));
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
